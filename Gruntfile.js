@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  var pkg = require("./package.json");
+  var pkg = require('./package.json');
   global.jasmineVersion = pkg.version;
 
   grunt.initConfig({
@@ -14,25 +14,25 @@ module.exports = function(grunt) {
 
   grunt.loadTasks('grunt/tasks');
 
-  grunt.registerTask('default', ['sass:dist', "cssUrlEmbed"]);
+  grunt.registerTask('default', ['sass:dist', 'cssUrlEmbed']);
 
   var version = require('./grunt/tasks/version.js');
 
   grunt.registerTask('build:copyVersionToGem',
-    "Propagates the version from package.json to version.rb",
+    'Propagates the version from package.json to version.rb',
     version.copyToGem);
 
   grunt.registerTask('buildDistribution',
     'Builds and lints jasmine.js, jasmine-html.js, jasmine.css',
     [
       'sass:dist',
-      "cssUrlEmbed",
+      'cssUrlEmbed',
       'concat'
     ]
   );
 
-  grunt.registerTask("execSpecsInNode",
-    "Run Jasmine core specs in Node.js",
+  grunt.registerTask('execSpecsInNode',
+    'Run Jasmine core specs in Node.js',
     function() {
       var done = this.async(),
           Jasmine = require('jasmine'),
@@ -48,10 +48,10 @@ module.exports = function(grunt) {
     }
   );
 
-  grunt.registerTask("execSpecsInNode:performance",
-    "Run Jasmine performance specs in Node.js",
+  grunt.registerTask('execSpecsInNode:performance',
+    'Run Jasmine performance specs in Node.js',
     function() {
-      require("shelljs").exec("node_modules/.bin/jasmine JASMINE_CONFIG_PATH=spec/support/jasmine-performance.json");
+      require('shelljs').exec('node_modules/.bin/jasmine JASMINE_CONFIG_PATH=spec/support/jasmine-performance.json');
     }
   );
 };
